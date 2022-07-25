@@ -53,27 +53,28 @@ Use `forEach` to build a new array of strings, each string modified by the callb
 ------------------------------------------------------------------------------------------------ */
 
 const greeting = (word) => {
-  let newarr= [];
-  let arr =  word.split('');
-  arr.push(`!`)
-  arr.forEach((arr) => newarr.push(`${arr.toUpperCase()}`));
-  word = newarr
-  return word;
-  console.log(word);
-  
+// uppercase the word
+word = word.toUpperCase();
+// return the greeting
+console.log( word + "!");
+return word + "!";  
 };
 
 const speaker = (words, callback) => {
-  // words.join('')
-  // callback(words)
-  // return;
-  
-};
+
+    words.forEach((word,index) => {
+    
+      words[index] = callback(word);
+    
+    });
+      return words
+    };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
-Write a function named addValues that takes in an array and a value and pushes the value into the array. This function does not need a return statement.
+Write a function named addValues that takes in an array and a value and 
+pushes the value into the array. This function does not need a return statement.
 
 Then, write a function named addNumbers that takes in four arguments:
   - A number to be added to an array
@@ -87,11 +88,14 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-  // Solution code here...
+  arr.push(value);
 };
 
 const addNumbers = (num, arr, times, callback) => {
-  // Solution code here...
+  for(var i =0 ; i<times ; i++ ){
+    callback(arr,num);
+  }
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -109,14 +113,18 @@ The inventory is formatted like this:
   { name: 'blueberries', available: false }
 ]
 
-This function should use forEach to populate your grocery list based on the store's inventory. If the item is available, add it to your list. Return the final list.
+This function should use forEach to populate your grocery list based on the store's inventory.
+ If the item is available, add it to your list. Return the final list.
 ------------------------------------------------------------------------------------------------ */
-
-// const createList = (availableItems) => {
-//   let list = [];
-//   availableItems.forEach(() => If(availableItems.available == true){list.push(availableItems)});
-//   return;
-// };
+const createList = (availableItems) => {
+  let list=[];
+  availableItems.forEach((item) => {
+    if(item.available){
+      list.push(item.name);
+    }
+  });
+  return list;
+}
 
 /* ------------------------------------------------------------------------------------------------
 STRETCH - CHALLENGE 7
