@@ -5,7 +5,8 @@ CHALLENGE 1 - Review
 
 Write a function named updateAnimal that takes in array of animals (strings) and some callback function.
 
-This function should first create a new array. Then iterate over the input array and modify each value based on the callback function provided.
+This function should first create a new array. Then iterate over the input array and modify each value based on the 
+callback function provided.
 
 Push each updated animal string into the new array. Return the new array.
 
@@ -22,19 +23,26 @@ function lower(str) {
 }
 
 const updateAnimal = (arr, callback) => {
-  // Solution code here...
+  let newarr = arr.map(callback)
+  return newarr;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function called sortNames that takes an array of names and sorts them alphabetically. Capital letters should come before lowercase letters.
+Write a function called sortNames that takes an array of names and sorts them alphabetically. Capital letters should 
+come before lowercase letters.
 
 For example: 'Cat' would come before 'apple'
 ------------------------------------------------------------------------------------------------ */
 
 const sortNames = (arr) => {
-  // Solution code here...
+  arr.sort((a , b) => {
+    if (a > b) return 1;
+    if (a < b) return -1;
+    else return 0;
+  })
+ return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,25 +54,37 @@ HINT: Beware... JS default is "Lexical" ordering.
 ------------------------------------------------------------------------------------------------ */
 
 const sortNumbers = (arr) => {
-  // Solution code here...
+  arr.sort((a , b) => {
+    if (a > b) return 1;
+    if (a < b) return -1;
+    else return 0;
+  })
+ return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
-Write a function named sortBackwards that takes in an array of numbers and returns the same array, with the numbers sorted, largest to smallest.
+Write a function named sortBackwards that takes in an array of numbers and returns the same array, with the numbers \
+sorted, largest to smallest.
 
 HINT: Do it with a custom sort callback, not with using `.reverse()`. ;)
 ------------------------------------------------------------------------------------------------ */
 
 const sortBackwards = (arr) => {
-  // Solution code here...
+  arr.sort((a , b) => {
+    if (a > b) return -1;
+    if (a < b) return 1;
+    else return 0;
+  })
+ return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
-Write a function named alphabetize that takes in an array of strings and returns the same array with the strings sorted alphabetically.
+Write a function named alphabetize that takes in an array of strings and returns the same array with the strings 
+sorted alphabetically.
 
 In this alphabetization, capital letters come before lower case letters.
 
@@ -72,9 +92,9 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetize = (arr) => {
-  arr.sort((a,b) =>{
-    if(a > b) return 1;
-    if (a<b)return -1;
+  arr.sort((a , b) =>{
+    if (a > b) return 1;
+    if (a < b)return -1;
     else return 0;
   })
 return arr;
@@ -83,7 +103,8 @@ return arr;
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
-Write a function named sortByPrice that takes in an array of objects, each of which has a 'price' property, and sorts those objects by price, lowest to highest, returning the same array.
+Write a function named sortByPrice that takes in an array of objects, each of which has a 'price' property, 
+and sorts those objects by price, lowest to highest, returning the same array.
 
 Here is an example of the input:
 [
@@ -94,32 +115,50 @@ Here is an example of the input:
 ------------------------------------------------------------------------------------------------ */
 
 const sortByPrice = (arr) => {
+  arr.sort((a , b) => {
+    if (a.price > b.price ) return 1;
+    if (a.price < b.price ) return -1;
+    else return 0;
+  })
+ return arr;
   
   }
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
-Write a function named alphabetizeBetter that takes in an array of strings and returns the same array, with the strings sorted alphabetically. Capitalization should not change the sort order of two strings.
+Write a function named alphabetizeBetter that takes in an array of strings and returns the same array, with the strings 
+sorted alphabetically. Capitalization should not change the sort order of two strings.
 
-For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, and so is ['alphabet', 'Alphabet', 'carrot', 'Zebra'].
+For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, and so is 
+['alphabet', 'Alphabet', 'carrot', 'Zebra'].
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetizeBetter = (arr) => {
-  arr.sort((a,b) =>{
+  arr.sort((a , b) =>{
+    if(a.toUpperCase > b.toUpperCase) return -1;
     if(a.toUpperCase > b.toLowerCase) return 1;
-    else return 0;})
-  
+    else return 0;
+  })
+  return arr;
+
   };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
 
-Write a function named sortByLength that takes in an array of strings and returns the same array, with the strings sorted by their length, lowest to highest.
+Write a function named sortByLength that takes in an array of strings and returns the same array, with the strings
+ sorted by their length, lowest to highest.
 ------------------------------------------------------------------------------------------------ */
 
 const sortByLength = (arr) => {
-  // Solution code here...
+  arr.sort((a , b) =>{
+    if (a.length > b.length) return 1;
+    if (a.length < b.length)return -1;
+    else return 0;
+  })
+ return arr;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -294,7 +333,7 @@ xdescribe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should sort strings by length', () => {
     const ans = sortByLength(['alphabet', 'Zebra', 'Alphabet', 'carrot']);
     expect(ans.slice(0,2)).toStrictEqual(['Zebra', 'carrot']);
