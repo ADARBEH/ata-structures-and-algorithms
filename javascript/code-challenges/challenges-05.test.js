@@ -168,12 +168,9 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
- let strlist=str.split("");
-strlist.reduce(previous,current,index)
-if (index==1){
-  [previous,current]=[current,previous]
-  console.log(strlist)
-}
+  
+return str.split('').reduce((acc, currItem)=> currItem + acc, '');
+
 };
 
 /* ------------------------------------------------------------------------------------------------

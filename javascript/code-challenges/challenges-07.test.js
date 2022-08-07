@@ -145,8 +145,15 @@ const gruffaloCrumble = {
 
 const listFoods = (recipe) => {
   let result = [];
-  // Solution code here...
-  return result;
+  for (let i=0 ; i<recipe.ingredients.length;i++){
+
+    let first_value = recipe.ingredients[i].replace(/(medium-sized|[0-9]|pounds|gallons|pound|cups|)/g, '')
+    let second_value = first_value.replace(/^(  )/,'')
+
+  
+    result.push(second_value)
+  }
+ return result;
 };
 
 /* ------------------------------------------------------------------------------------------------

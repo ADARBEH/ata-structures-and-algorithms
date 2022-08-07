@@ -9,9 +9,8 @@ using the 'reduce' method.
 E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
-  var max = arr.reduce(function(a, b) {
-    return Math.max(a, b);
-})
+  var max = arr.reduce((a, b) => Math.max(a, b))
+  return max;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -41,8 +40,12 @@ if the value is in the object.
 ------------------------------------------------------------------------------------------------ */
 
 const checkValues = (obj, value) => {
-
-   Object.values(obj)
+  if (obj.class == value){
+    return true;
+  }
+  else {
+    return false
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -65,8 +68,19 @@ HR has asked you to change the data to make it easier to print so that it looks 
 ------------------------------------------------------------------------------------------------ */
 
 const updateNumbers = (obj) => {
-  // Solution code here...
+  let arr1 = Object.keys(obj) 
+  let arr2 = Object.values(obj) 
+  let result = [];
+  
+  for (let i=0;i<arr1.length;i++){
+  
+    let value = arr1[i] + ': '+arr2[i]
+    result.push(value)
+  }
+  
+  return result;
 };
+
 
 
 
@@ -121,14 +135,17 @@ const characters = [
 
 const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  for(let i=0;i<characters.length;i++){
+  houses.push(characters[i].house)
+  }
   return houses;
 };
 
 /*------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
-Write a function named hasChildrenValues that uses Object.values to determine if any given character in the data set has children.
+Write a function named hasChildrenValues that uses Object.values to determine if any given character in the
+ data set has children.
 
 This function should take in an array of data and a character name and return a Boolean.
 
@@ -138,8 +155,14 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
+  for (let i=0;i<arr.length;i++){
 
+    if (arr[i].name == character){
+      console.log(arr[i])
+      if (arr[i].children){
+      return true;} else return false
+      }
+    }
 };
 
 /* ------------------------------------------------------------------------------------------------
